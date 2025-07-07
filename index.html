@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense & Lending Tracker</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Google API Libraries -->
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Expense & Lending Tracker</h1>
+        </header>
+
+        <!-- Authentication Section -->
+        <div id="auth-section">
+            <h2>Sign in to access your expense tracker</h2>
+            <p>This app requires Google authentication to access your Google Sheets.</p>
+            <button id="authorize-button" class="btn">Sign In with Google</button>
+            <button id="signout-button" class="btn hidden">Sign Out</button>
+            <p id="login-status">Please sign in to access your tracker</p>
+        </div>
+
+        <!-- App Content (Hidden until authenticated) -->
+        <div id="app-content" class="hidden">
+            <div class="form-section">
+                <h2>Add New Entry</h2>
+                <form id="entry-form">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount:</label>
+                        <input type="number" id="amount" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Type:</label>
+                        <select id="type">
+                            <option value="expense">Expense</option>
+                            <option value="lending">Lending</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Add Entry</button>
+                </form>
+            </div>
+
+            <div class="data-section">
+                <h2>Recent Entries</h2>
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="all">All</button>
+                    <button class="tab-btn" data-tab="expense">Expenses</button>
+                    <button class="tab-btn" data-tab="lending">Lending</button>
+                </div>
+                <div id="entries-list">
+                    <!-- Entries will be loaded here -->
+                    <p class="loading">Loading entries...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
